@@ -1,0 +1,18 @@
+﻿@model SeatsViewModel
+
+<div class="text-center">
+    <form enctype="multipart/form-data" asp-action="Reserve" method="post">
+        @foreach (var seat in Model.FreeSeats)
+        {
+            String seatNumber = "Seat_" + seat;
+
+            <input name="selectedSeats" type="checkbox" id=@seatNumber value=@seat>
+            <label for=@seatNumber>@seat</label>            
+        }
+    <div>
+        <input hidden name="startStations" type="number" id=@Model.StartStationValue value=@Model.StartStationValue>
+        <input hidden name="endStations" type="number" id=@Model.EndStationValue value=@Model.EndStationValue>
+        <input type="submit" value="Reserve" />
+    </div>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+﻿@model IndexViewModel
+@{
+    List<SelectListItem>  dropdownStations = new List<SelectListItem>();
+    foreach (var s in Model.Stations)
+    {
+        dropdownStations.Add(new SelectListItem { Text = s.Value, Value = s.Key.ToString() });
+    }
+}
+
+<div class="text-center">
+    <form enctype="multipart/form-data" asp-action="Check" method="post">
+        @Html.DropDownList("StartStations", dropdownStations)
+        @Html.DropDownList("EndStations", dropdownStations)
+        <div>
+            <input type="submit" value="Check" />
+        </div>
+    </form>
+
+
+</div>
